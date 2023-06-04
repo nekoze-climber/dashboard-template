@@ -42,7 +42,7 @@ const closedMixin = (theme: Theme): CSSObject => ({
 })
 
 interface AppBarProps extends MuiAppBarProps {
-    open?: boolean
+    open: boolean
 }
 
 const AppBar = styled(MuiAppBar, {
@@ -68,11 +68,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     flexShrink: 0,
     whiteSpace: 'nowrap',
     boxSizing: 'border-box',
-    ...(open && {
+    ...(open === true && {
         ...openedMixin(theme),
         '& .MuiDrawer-paper': openedMixin(theme),
     }),
-    ...(!open && {
+    ...(open === false && {
         ...closedMixin(theme),
         '& .MuiDrawer-paper': closedMixin(theme),
     }),
