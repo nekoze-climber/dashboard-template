@@ -88,7 +88,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 }))
 
-export default function SideMenu(): JSX.Element {
+const SideMenu = (): JSX.Element => {
     const theme = useTheme()
     const [open, setOpen] = React.useState(false)
 
@@ -199,3 +199,4 @@ export default function SideMenu(): JSX.Element {
         </Box>
     )
 }
+export default SideMenu
