@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import SideMenu from './components/SideMenu'
 
-function App() {
+function App(): JSX.Element {
     return (
         <SideMenu></SideMenu>
         // <div className="App">

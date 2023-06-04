@@ -88,15 +88,15 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
     }),
 }))
 
-export default function SideMenu() {
+export default function SideMenu(): JSX.Element {
     const theme = useTheme()
     const [open, setOpen] = React.useState(false)
 
-    const handleDrawerOpen = () => {
+    const handleDrawerOpen = (): void => {
         setOpen(true)
     }
 
-    const handleDrawerClose = () => {
+    const handleDrawerClose = (): void => {
         setOpen(false)
     }
 
