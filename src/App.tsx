@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import CssBaseline from '@mui/material/CssBaseline'
 import React from 'react'
 import './App.css'
 import SideMenu from './components/SideMenu'
@@ -6,6 +7,7 @@ import SideMenu from './components/SideMenu'
 const App = (): JSX.Element => {
     return (
         <Box sx={{ display: 'flex' }}>
+            <CssBaseline />
             <SideMenu></SideMenu>
         </Box>
         // <div className="App">
