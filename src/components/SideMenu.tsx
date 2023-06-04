@@ -101,7 +101,7 @@ const SideMenu = (): JSX.Element => {
     }
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <>
             <CssBaseline />
             <AppBar position="fixed" open={open}>
                 <Toolbar>
@@ -196,7 +196,7 @@ const SideMenu = (): JSX.Element => {
                     viverra maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
                 </Typography>
             </Box>
-        </Box>
+        </>
     )
 }
 export default SideMenu

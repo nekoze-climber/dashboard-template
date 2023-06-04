@@ -1,10 +1,13 @@
+import Box from '@mui/material/Box'
 import React from 'react'
 import './App.css'
 import SideMenu from './components/SideMenu'
 
 const App = (): JSX.Element => {
     return (
-        <SideMenu></SideMenu>
+        <Box sx={{ display: 'flex' }}>
+            <SideMenu></SideMenu>
+        </Box>
         // <div className="App">
         //     <header className="App-header">
         //         <img src={logo} className="App-logo" alt="logo" />
