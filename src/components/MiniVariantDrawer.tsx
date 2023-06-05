@@ -80,7 +80,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 const MiniVariantDrawer = (): JSX.Element => {
     const theme = useTheme()
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = React.useState(true)
 
     const handleDrawerOpen = (): void => {
         setOpen(true)
