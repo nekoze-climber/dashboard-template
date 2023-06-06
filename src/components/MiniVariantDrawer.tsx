@@ -18,6 +18,7 @@ import MapIcon from '@mui/icons-material/Map'
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt'
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import DrawerHeader from './DrawerHeader'
+import { useNavigate } from 'react-router-dom'
 
 const drawerWidth = 240
 
@@ -82,6 +83,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const MiniVariantDrawer = (): JSX.Element => {
     const theme = useTheme()
     const [open, setOpen] = React.useState(true)
+    const navigate = useNavigate()
+    const navigateClick = (url: string): void => {
+        navigate(url)
+    }
 
     const handleDrawerOpen = (): void => {
         setOpen(true)
@@ -118,8 +123,15 @@ const MiniVariantDrawer = (): JSX.Element => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Map', 'Add Location', 'Car'].map((text, index) => (
-                        <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                    {['map', 'direction', 'car'].map((text, index) => (
+                        <ListItem
+                            key={text}
+                            disablePadding
+                            sx={{ display: 'block' }}
+                            onClick={() => {
+                                navigateClick(text)
+                            }}
+                        >
                             <ListItemButton
                                 sx={{
                                     minHeight: 48,
