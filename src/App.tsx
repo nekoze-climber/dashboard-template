@@ -4,7 +4,7 @@ import React from 'react'
 import './App.css'
 import DrawerHeader from './components/DrawerHeader'
 import MiniVariantDrawer from './components/MiniVariantDrawer'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import MapComponent from './components/MapComponent'
 import CarComponent from './components/CarComponent'
 import DirectionComponent from './components/DirectionComponent'
@@ -17,9 +17,11 @@ const App = (): JSX.Element => {
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
                 <Routes>
-                    <Route path="/map" element={<MapComponent />}></Route>
+                    <Route path="/" element={<Navigate to="map" />}></Route>
+                    <Route path="map" element={<MapComponent />}></Route>
                     <Route path="car" element={<CarComponent />}></Route>
                     <Route path="direction" element={<DirectionComponent />}></Route>
+                    <Route path="*" element={<Navigate to="/" replace />}></Route>
                 </Routes>
             </Box>
         </Box>
