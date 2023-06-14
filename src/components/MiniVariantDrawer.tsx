@@ -18,7 +18,8 @@ import MapIcon from '@mui/icons-material/Map'
 import AddLocationAltIcon from '@mui/icons-material/AddLocationAlt'
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar'
 import DrawerHeader from './DrawerHeader'
-import { useNavigate } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
+import { colors } from '@mui/material'
 
 const drawerWidth = 240
 
@@ -65,6 +66,18 @@ const AppBar = styled(MuiAppBar, {
     }),
 }))
 
+const current = {
+    color: colors.blue[800],
+    textDecoration: 'none',
+    background: colors.grey[100],
+    width: '100%',
+    display: 'block',
+}
+const nonActive = {
+    color: 'black',
+    textDecoration: 'none',
+}
+
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
     width: drawerWidth,
     flexShrink: 0,
@@ -83,10 +96,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 const MiniVariantDrawer = (): JSX.Element => {
     const theme = useTheme()
     const [open, setOpen] = React.useState(true)
-    const navigate = useNavigate()
-    const navigateClick = (url: string): void => {
-        navigate(url)
-    }
 
     const handleDrawerOpen = (): void => {
         setOpen(true)
@@ -124,35 +133,30 @@ const MiniVariantDrawer = (): JSX.Element => {
                 <Divider />
                 <List>
                     {['map', 'direction', 'car'].map((text, index) => (
-                        <ListItem
-                            key={text}
-                            disablePadding
-                            sx={{ display: 'block' }}
-                            onClick={() => {
-                                navigateClick(text)
-                            }}
-                        >
-                            <ListItemButton
-                                sx={{
-                                    minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
-                                    px: 2.5,
-                                }}
-                            >
-                                <ListItemIcon
+                        <NavLink key={text} to={text} style={({ isActive }) => (isActive ? { ...current } : { ...nonActive })}>
+                            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                                <ListItemButton
                                     sx={{
-                                        minWidth: 0,
-                                        mr: open ? 3 : 'auto',
-                                        justifyContent: 'center',
+                                        minHeight: 48,
+                                        justifyContent: open ? 'initial' : 'center',
+                                        px: 2.5,
                                     }}
                                 >
-                                    {index === 0 && <MapIcon />}
-                                    {index === 1 && <AddLocationAltIcon />}
-                                    {index === 2 && <DirectionsCarIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                            </ListItemButton>
-                        </ListItem>
+                                    <ListItemIcon
+                                        sx={{
+                                            minWidth: 0,
+                                            mr: open ? 3 : 'auto',
+                                            justifyContent: 'center',
+                                        }}
+                                    >
+                                        {index === 0 && <MapIcon />}
+                                        {index === 1 && <AddLocationAltIcon />}
+                                        {index === 2 && <DirectionsCarIcon />}
+                                    </ListItemIcon>
+                                    <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                                </ListItemButton>
+                            </ListItem>
+                        </NavLink>
                     ))}
                 </List>
             </Drawer>
